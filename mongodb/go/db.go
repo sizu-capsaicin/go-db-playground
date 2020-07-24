@@ -16,7 +16,7 @@ const (
 )
 
 // Insert は document を instert する関数
-func Insert() {
+func Insert(query string) {
 	// MongoDB との接続
 	s, _ := mgo.Dial(path)
 	defer s.Close()
