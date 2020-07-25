@@ -51,15 +51,15 @@ func main() {
 	}
 
 	// テーブルが既に作成済みであれば一度 drop する
-	query = "drop temporary table if exists companies, safeties, lines, trains"
+	query = "drop temporary table if exists `companies`, `safeties`, `lines`, `trains`"
 	_, err = db.Exec(query)
 	if err != nil {
 		log.Fatalln(err)
 	}
 
 	// テーブルの作成
-	query = "create table companies("
-	query += "id int auto_incremet not null primary key, "
+	query = "create table `companies`("
+	query += "id int auto_increment not null primary key, "
 	query += "name varchar(50), "
 	query += "location varchar(50), "
 	query += "url varchar(50)"
@@ -69,8 +69,8 @@ func main() {
 		log.Fatalln(err)
 	}
 
-	query = "create table safeties("
-	query += "id int auto_incremet not null primary key, "
+	query = "create table `safeties`("
+	query += "id int auto_increment not null primary key, "
 	query += "name varchar(50) "
 	query += ") charset=utf8"
 	_, err = db.Exec(query)
@@ -78,8 +78,8 @@ func main() {
 		log.Fatalln(err)
 	}
 
-	query = "create table lines("
-	query += "id int auto_incremet not null primary key, "
+	query = "create table `lines`("
+	query += "id int auto_increment not null primary key, "
 	query += "name varchar(50), "
 	query += "rail_width int, "
 	query += "rail_range int, "
@@ -100,8 +100,8 @@ func main() {
 		log.Fatalln(err)
 	}
 
-	query = "create table trains("
-	query += "id int auto_incremet not null primary key, "
+	query = "create table `trains`("
+	query += "id int auto_increment not null primary key, "
 	query += "name varchar(50), "
 	query += "line_id int not null, "
 	query += "operator_id int not null, "
