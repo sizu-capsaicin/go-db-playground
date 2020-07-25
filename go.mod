@@ -1,4 +1,4 @@
-module github.com/sizu-capsaicin/go-mgo-playground
+module github.com/sizu-capsaicin/go-db-playground
 
 go 1.14
 
