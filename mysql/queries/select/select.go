@@ -11,7 +11,7 @@ import (
 
 const (
 	mysqlPath = "tcp(127.0.0.1:3306)/"
-	userName  = "root"
+	userName  = "go"
 	passwd    = "xxxx"
 	dbName    = "adb"
 	path      = userName + ":" + passwd + "@" + mysqlPath + dbName
