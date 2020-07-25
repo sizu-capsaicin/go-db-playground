@@ -2,7 +2,11 @@ package main
 
 import (
 	"database/sql"
+	"fmt"
 	"log"
+
+	_ "github.com/go-sql-driver/mysql"
+	mysql "github.com/sizu-capsaicin/go-db-playground/mysql"
 )
 
 const (
@@ -28,9 +32,16 @@ func main() {
 		log.Fatalln(err)
 	}
 
-	var result []Train
-	for _, row := range rows {
-		train := Train{}
+	var results []mysql.Train
+	for rows.Next() {
+		var train mysql.Train
+		if err = rows.Scan(train.name); err != nil {
+			log.Fatalln(err)
+		}
+		results = append(results, train)
+	}
 
+	for _, r := range results {
+		fmt.Printf("Train name: %s\n", r.name)
 	}
 }

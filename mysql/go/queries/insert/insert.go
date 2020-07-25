@@ -43,7 +43,7 @@ func main() {
 
 	// クエリの実行
 	query := ""
-	ins, err := db.Query(query)
+	ins, err := db.Prepare(query)
 	if err != nil {
 		log.Fatalln(err)
 	}
