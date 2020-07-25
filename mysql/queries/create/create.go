@@ -9,7 +9,7 @@ import (
 )
 
 const (
-	mysqlPath = "tcp(localhost:3306)/"
+	mysqlPath = "tcp(127.0.0.1:3306)/"
 	userName  = "go"
 	passwd    = "dstorv223strahv"
 )
@@ -27,16 +27,15 @@ func main() {
 	}
 	defer db.Close()
 
-	// データベースの作成
+	// データベースが既に作成済みであれば一度 drop する
 	query := "drop database if exists " + *dbName
 	_, err = db.Exec(query)
 	if err != nil {
-		log.Fatalln(err)
 		log.Fatalf("Faild to exec query: %s\n", query)
 	}
 
 	// データベースの作成
-	query = "CREATE DATABASE " + *dbName
+	query = "create database " + *dbName
 	_, err = db.Exec(query)
 	if err != nil {
 		log.Fatalf("Faild to exec query: %s\n", query)
