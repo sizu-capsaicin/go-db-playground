@@ -12,14 +12,16 @@ import (
 const (
 	mysqlPath = "tcp(127.0.0.1:3306)/"
 	userName  = "go"
-	passwd    = "xxxx"
 )
 
 func main() {
-	var dbName = flag.String("db", "adb", "Database name")
+	var (
+		dbName = flag.String("db", "adb", "Database name")
+		passwd = flag.String("pw", "xxxx", "Enter the password")
+	)
 	flag.Parse()
 
-	path := userName + ":" + passwd + "@" + mysqlPath
+	path := userName + ":" + *passwd + "@" + mysqlPath
 
 	// MySQL への接続
 	db, err := sql.Open("mysql", path)
