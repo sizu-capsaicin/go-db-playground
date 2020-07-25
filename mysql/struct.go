@@ -12,8 +12,6 @@ type Train struct {
 	MaxSpeed int
 	// 起動加速度
 	Acceleration int
-	// 搭載保安装置
-	Safeties []Safety
 }
 
 // Line は line table のデータを格納する構造体
