@@ -35,13 +35,13 @@ func main() {
 	var results []mysql.Train
 	for rows.Next() {
 		var train mysql.Train
-		if err = rows.Scan(train.name); err != nil {
+		if err = rows.Scan(train.Name); err != nil {
 			log.Fatalln(err)
 		}
 		results = append(results, train)
 	}
 
 	for _, r := range results {
-		fmt.Printf("Train name: %s\n", r.name)
+		fmt.Printf("Train name: %s\n", r.Name)
 	}
 }
