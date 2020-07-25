@@ -3,6 +3,8 @@ package main
 import (
 	"database/sql"
 	"log"
+
+	_ "github.com/go-sql-driver/mysql"
 )
 
 // Train は train table のデータを格納する構造体
@@ -46,5 +48,5 @@ func main() {
 		log.Fatalln(err)
 	}
 
-	ins.Exec()
+	ins.Exec("")
 }
