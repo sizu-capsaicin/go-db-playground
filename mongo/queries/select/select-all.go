@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"strconv"
 
 	"github.com/sizu-capsaicin/go-db-playground/mongo"
@@ -41,4 +42,5 @@ func main() {
 		str += "|- max-speed: " + strconv.Itoa(t.MaxSpeed) + "\n"
 		str += "|- acceleration: " + strconv.FormatFloat(t.Acceleration, 'f', 1, 64) + "\n"
 	}
+	fmt.Print(str)
 }
