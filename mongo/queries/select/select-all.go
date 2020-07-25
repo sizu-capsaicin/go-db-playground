@@ -40,6 +40,5 @@ func main() {
 		str += "  |- URL: " + t.Operator.URL + "\n"
 		str += "|- max-speed: " + strconv.Itoa(t.MaxSpeed) + "\n"
 		str += "|- acceleration: " + strconv.Itoa(t.Acceleration) + "\n"
-		str += "|- safeties"
 	}
 }
