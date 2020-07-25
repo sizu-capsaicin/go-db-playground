@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"flag"
 	"io/ioutil"
 	"log"
@@ -9,10 +10,11 @@ import (
 )
 
 func main() {
-	var json = flag.String("json", "mongo/json/2100.json", "json file path")
+	var filePath = flag.String("json", "mongo/json/2100.json", "json file path")
+	flag.Parse()
 
 	// json ファイルを開く
-	file, err := ioutil.ReadFile(json)
+	file, err := ioutil.ReadFile(*filePath)
 	if err != nil {
 		panic(err)
 	}
