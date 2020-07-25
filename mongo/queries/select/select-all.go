@@ -23,7 +23,7 @@ func main() {
 		for _, l := range t.Lines {
 			str += "  |- name: " + l.Name + "\n"
 			str += "  |- raild-width: " + strconv.Itoa(l.RailWidth) + "\n"
-			str += "  |- raild-range: " + strconv.Itoa(l.RailRange) + "\n"
+			str += "  |- raild-range: " + strconv.FormatFloat(l.RailRange, 'f', 1, 64) + "\n"
 			str += "  |- stations: " + strconv.Itoa(l.Stations) + "\n"
 			str += "  |- safeties"
 			for _, s := range l.Safeties {
@@ -39,6 +39,6 @@ func main() {
 		str += "  |- location: " + t.Operator.Location + "\n"
 		str += "  |- URL: " + t.Operator.URL + "\n"
 		str += "|- max-speed: " + strconv.Itoa(t.MaxSpeed) + "\n"
-		str += "|- acceleration: " + strconv.Itoa(t.Acceleration) + "\n"
+		str += "|- acceleration: " + strconv.FormatFloat(t.Acceleration, 'f', 1, 64) + "\n"
 	}
 }

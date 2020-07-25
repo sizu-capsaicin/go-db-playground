@@ -16,7 +16,7 @@ type Train struct {
 	// 最高運転速度
 	MaxSpeed int `json:"max-speed"`
 	// 起動加速度
-	Acceleration float32 `json:"acceleration"`
+	Acceleration float64 `json:"acceleration"`
 }
 
 // Line は line table のデータを格納する構造体
@@ -26,7 +26,7 @@ type Line struct {
 	// 軌間
 	RailWidth int `json:"rail-width"`
 	// 路線距離
-	RailRange float32 `json:"rail-range"`
+	RailRange float64 `json:"rail-range"`
 	// 駅数
 	Stations int `json:"stations"`
 	// 保安装置
