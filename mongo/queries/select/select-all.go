@@ -40,7 +40,7 @@ func main() {
 		str += "  |- location: " + t.Operator.Location + "\n"
 		str += "  |- URL: " + t.Operator.URL + "\n"
 		str += "|- max-speed: " + strconv.Itoa(t.MaxSpeed) + " km/h\n"
-		str += "|- acceleration: " + strconv.FormatFloat(t.Acceleration, 'f', 1, 64) + "km/h/s\n"
+		str += "|- acceleration: " + strconv.FormatFloat(t.Acceleration, 'f', 1, 64) + " km/h/s\n"
 	}
 	fmt.Print(str)
 }

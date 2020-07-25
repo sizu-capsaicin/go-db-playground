@@ -28,14 +28,14 @@ func Insert(data Data) {
 	}
 }
 
-// Delete は指定した collection の全 document を delete する関数
-func Delete(c string) {
+// DropAll は指定した collection の全 document を delete する関数
+func DropAll(q bson.M) {
 	// MongoDB との接続
 	s, _ := mgo.Dial(path)
 	defer s.Close()
 	db := s.DB(dbName)
 
-	info, err := db.C(c).RemoveAll(bson.M{})
+	info, err := db.C(cName).RemoveAll(q)
 	if err != nil {
 		log.Fatalln(err)
 	}
