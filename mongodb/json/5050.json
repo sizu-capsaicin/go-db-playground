@@ -1,0 +1,112 @@
+{
+  "train": {
+    "name": "東急 5050 系",
+    "lines": [
+      {
+        "name": "東急東横線",
+        "rail-width": 1067,
+        "range": 24.2,
+        "safety": [
+          {
+            "name": "ATC-P"
+          }
+        ],
+        "operator": {
+          "name": "東急電鉄",
+          "location": "東京都渋谷区神泉町 8 番 16 号",
+          "url": "https://www.tokyu.co.jp/railway/"
+        }
+      },
+      {
+        "name": "横浜高速鉄道みなとみらい線",
+        "rail-width": 1067,
+        "range": 4.1,
+        "safety": [
+          {
+            "name": "ATC-P"
+          }
+        ],
+        "operator": {
+          "name": "横浜高速鉄道",
+          "location": "神奈川県横浜市中区元町 1 丁目 11 番",
+          "url": "http://www.mm21railway.co.jp/"
+        }
+      },
+      {
+        "name": "東京メトロ副都心線",
+        "rail-width": 1067,
+        "range": 11.9,
+        "safety": [
+          {
+            "name": "新 CS-ATC"
+          },
+          {
+            "name": "ATO"
+          }
+        ],
+        "operator": {
+          "name": "東京地下鉄",
+          "location": "東京都台東区東上野 3 丁目 19 番 6 号",
+          "url": "http://www.toukyometro.jp"
+        }
+      },
+      {
+        "name": "西武有楽町線",
+        "rail-width": 1067,
+        "range": 2.6,
+        "safety": [
+          {
+            "name": "CS-ATC (ATC-4型)"
+          }
+        ],
+        "operator": {
+          "name": "西武鉄道",
+          "location": "埼玉県所沢市くすのき台 1 丁目 11 番地の 1",
+          "url": "http://www.seiburailway.jp"
+        }
+      },
+      {
+        "name": "西武池袋線",
+        "rail-width": 1067,
+        "range": 57.8,
+        "safety": [
+          {
+            "name": "ATS"
+          }
+        ],
+        "operator": {
+          "name": "西武鉄道",
+          "location": "埼玉県所沢市くすのき台 1 丁目 11 番地の 1",
+          "url": "http://www.seiburailway.jp"
+        }
+      }
+    ],
+    "operator": {
+      "name": "東急電鉄",
+      "location": "東京都渋谷区神泉町 8 番 16 号",
+      "url": "https://www.tokyu.co.jp/railway/"
+    },
+    "max-speed": 110,
+    "acceleration": 3.3,
+    "safeties": [
+      {
+        "name": "ATC-P"
+      },
+      {
+        "name": "新 CS-ATC"
+      },
+      {
+        "name": "T-DATC"
+      },
+      {
+        "name": "ATO"
+      },
+      {
+        "name": "ATS"
+      },
+      {
+        "name": "東武 ATS (TSP)"
+      }
+    ]
+  }
+}
