@@ -20,8 +20,8 @@ func main() {
 	}
 
 	// json を構造体へパース
-	var t mongo.Train
-	if err := json.Unmarshal(file, &t); err != nil {
+	var d mongo.Data
+	if err := json.Unmarshal(file, &d); err != nil {
 		if err, ok := err.(*json.SyntaxError); ok {
 			log.Fatalln(string(file[err.Offset-15 : err.Offset+15]))
 		}
@@ -29,5 +29,5 @@ func main() {
 	}
 
 	// DB への書き込み
-	mongo.Insert(t)
+	mongo.Insert(d)
 }

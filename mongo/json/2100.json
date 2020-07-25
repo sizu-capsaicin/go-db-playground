@@ -42,13 +42,5 @@
     },
     "max-speed": 120,
     "acceleration": 3.5,
-    "safeties": [
-      {
-        "name": "C-ATS"
-      },
-      {
-        "name": "1 号型 ATS"
-      }
-    ]
   }
 }

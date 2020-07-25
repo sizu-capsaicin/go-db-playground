@@ -112,25 +112,5 @@
     },
     "max-speed": 110,
     "acceleration": 3.3,
-    "safeties": [
-      {
-        "name": "ATC-P"
-      },
-      {
-        "name": "新 CS-ATC"
-      },
-      {
-        "name": "T-DATC"
-      },
-      {
-        "name": "ATO"
-      },
-      {
-        "name": "ATS"
-      },
-      {
-        "name": "東武 ATS (TSP)"
-      }
-    ]
   }
 }

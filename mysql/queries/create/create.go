@@ -11,19 +11,21 @@ import (
 const (
 	mysqlPath = "tcp(127.0.0.1:3306)/"
 	userName  = "go"
-	passwd    = "dstorv223strahv"
 )
 
 func main() {
-	var dbName = flag.String("db", "adb", "Database name")
+	var (
+		dbName = flag.String("db", "adb", "Database name")
+		passwd = flag.String("pw", "xxxx", "Enter the password")
+	)
 	flag.Parse()
 
-	path := userName + ":" + passwd + "@" + mysqlPath
+	path := userName + ":" + *passwd + "@" + mysqlPath
 
 	// MySQL への接続
 	db, err := sql.Open("mysql", path)
 	if err != nil {
-		log.Fatalln("Faild to DB connection.")
+		log.Fatalln(err)
 	}
 	defer db.Close()
 
@@ -31,29 +33,89 @@ func main() {
 	query := "drop database if exists " + *dbName
 	_, err = db.Exec(query)
 	if err != nil {
-		log.Fatalf("Faild to exec query: %s\n", query)
+		log.Fatalln(err)
 	}
 
 	// データベースの作成
 	query = "create database " + *dbName
 	_, err = db.Exec(query)
 	if err != nil {
-		log.Fatalf("Faild to exec query: %s\n", query)
+		log.Fatalln(err)
 	}
 
-	// テーブルのスイッチ
+	// データベースのスイッチ
 	query = "use " + *dbName
 	_, err = db.Exec(query)
 	if err != nil {
-		log.Fatalf("Faild to exec query: %s\n", query)
+		log.Fatalln(err)
+	}
+
+	// テーブルが既に作成済みであれば一度 drop する
+	query = "drop temporary table if exists `companies`, `safeties`, `lines`, `trains`"
+	_, err = db.Exec(query)
+	if err != nil {
+		log.Fatalln(err)
 	}
 
 	// テーブルの作成
+<<<<<<< HEAD
 /*
 	query = "create table train (id integer)"
+=======
+	query = "create table `companies`("
+	query += "id int auto_increment not null primary key, "
+	query += "name varchar(50), "
+	query += "location varchar(50), "
+	query += "url varchar(50)"
+	query += ") charset=utf8"
 	_, err = db.Exec(query)
 	if err != nil {
-		log.Fatalf("Faild to exec query: %s\n", query)
+		log.Fatalln(err)
+	}
+
+	query = "create table `safeties`("
+	query += "id int auto_increment not null primary key, "
+	query += "name varchar(50) "
+	query += ") charset=utf8"
+	_, err = db.Exec(query)
+	if err != nil {
+		log.Fatalln(err)
+	}
+
+	query = "create table `lines`("
+	query += "id int auto_increment not null primary key, "
+	query += "name varchar(50), "
+	query += "rail_width int, "
+	query += "rail_range int, "
+	query += "stations int, "
+	query += "safety_id int not null, "
+	query += "operator_id int not null, "
+	query += "foreign key (safety_id) "
+	query += "references `safeties`(id), "
+	query += "foreign key (operator_id) "
+	query += "references `companies`(id)"
+	query += ") charset=utf8"
+	_, err = db.Exec(query)
+	if err != nil {
+		log.Fatalln(err)
+	}
+
+	query = "create table `trains`("
+	query += "id int auto_increment not null primary key, "
+	query += "name varchar(50), "
+	query += "line_id int not null, "
+	query += "operator_id int not null, "
+	query += "max_speed int, "
+	query += "acceleration int, "
+	query += "foreign key (operator_id) "
+	query += "references `companies`(id), "
+	query += "foreign key (line_id) "
+	query += "references `lines`(id)"
+	query += ") charset=utf8"
+>>>>>>> 676b468d3878bd548002d2ef321e761c9646ae4c
+	_, err = db.Exec(query)
+	if err != nil {
+		log.Fatalln(err)
 	}
 */
 }
