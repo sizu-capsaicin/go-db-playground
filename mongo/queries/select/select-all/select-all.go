@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"strconv"
 
+	"github.com/globalsign/mgo/bson"
 	"github.com/sizu-capsaicin/go-db-playground/mongo"
 )
 
@@ -12,7 +13,7 @@ func main() {
 	var results []mongo.Data
 
 	// DB からの読み出し
-	mongo.FindAll(&results)
+	mongo.FindAll(&results, bson.M{})
 
 	// 結果の表示
 	var str string
