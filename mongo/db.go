@@ -16,7 +16,7 @@ const (
 )
 
 // Insert は document を instert する関数
-func Insert(data Train) {
+func Insert(data Data) {
 	// MongoDB との接続
 	s, _ := mgo.Dial(path)
 	defer s.Close()
@@ -42,4 +42,14 @@ func Delete(c string) {
 	if info != nil {
 		fmt.Printf("Removed: %d, Updated: %d\n", info.Removed, info.Updated)
 	}
+}
+
+// FindAll は全ての document を select する関数
+func FindAll(data interface{}) {
+	// MongoDB との接続
+	s, _ := mgo.Dial(path)
+	defer s.Close()
+	db := s.DB(dbName)
+
+	db.C(cName).Find(bson.M{}).All(data)
 }
