@@ -1,10 +1,9 @@
-ackage main
+package main
 
 import (
-	"log"
 	"flag"
 	"io/ioutil"
-	"encoding/json"
+	"log"
 
 	"github.com/sizu-capsaicin/go-db-playground/mongo"
 )
