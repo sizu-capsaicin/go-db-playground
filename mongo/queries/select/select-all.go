@@ -26,7 +26,7 @@ func main() {
 			str += "  |- raild-width: " + strconv.Itoa(l.RailWidth) + "\n"
 			str += "  |- raild-range: " + strconv.FormatFloat(l.RailRange, 'f', 1, 64) + "\n"
 			str += "  |- stations: " + strconv.Itoa(l.Stations) + "\n"
-			str += "  |- safeties"
+			str += "  |- safeties\n"
 			for _, s := range l.Safeties {
 				str += "    |- name: " + s.Name + "\n"
 			}
