@@ -1,0 +1,46 @@
+{
+  "train": {
+    "name": "東急 1000 系",
+    "lines": [
+      {
+        "name": "東急多摩川線",
+        "rail-width": 1067,
+        "rail-range": 5.6,
+        "stations": 7,
+        "safeties": [
+          {
+            "name": "東急 ATS"
+          }
+        ],
+        "operator": {
+          "name": "東急電鉄",
+          "location": "東京都渋谷区神泉町 8 番 16 号",
+          "url": "https://www.tokyu.co.jp/railway/"
+        }
+      },
+      {
+        "name": "東急池上線",
+        "rail-width": 1067,
+        "rail-range": 10.9,
+        "stations": 15,
+        "safeties": [
+          {
+            "name": "東急 ATS"
+          }
+        ],
+        "operator": {
+          "name": "東急電鉄",
+          "location": "東京都渋谷区神泉町 8 番 16 号",
+          "url": "https://www.tokyu.co.jp/railway/"
+        }
+      }
+    ],
+    "operator": {
+      "name": "東急電鉄",
+      "location": "東京都渋谷区神泉町 8 番 16 号",
+      "url": "https://www.tokyu.co.jp/railway/"
+    },
+    "max-speed": 85,
+    "acceleration": 3.5
+  }
+}
