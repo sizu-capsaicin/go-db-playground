@@ -25,7 +25,7 @@ func main() {
 	// MySQL への接続
 	db, err := sql.Open("mysql", path)
 	if err != nil {
-		log.Fatalln("Faild to DB connection.")
+		log.Fatalln(err)
 	}
 	defer db.Close()
 
@@ -33,43 +33,28 @@ func main() {
 	query := "drop database if exists " + *dbName
 	_, err = db.Exec(query)
 	if err != nil {
-		log.Fatalf("Faild to exec query: %s\n", query)
+		log.Fatalln(err)
 	}
 
 	// データベースの作成
 	query = "create database " + *dbName
 	_, err = db.Exec(query)
 	if err != nil {
-		log.Fatalf("Faild to exec query: %s\n", query)
+		log.Fatalln(err)
 	}
 
 	// データベースのスイッチ
 	query = "use " + *dbName
 	_, err = db.Exec(query)
 	if err != nil {
-		log.Fatalf("Faild to exec query: %s\n", query)
+		log.Fatalln(err)
 	}
 
 	// テーブルが既に作成済みであれば一度 drop する
-	query = "drop table if exists companies"
+	query = "drop temporary table if exists companies, safeties, lines, trains"
 	_, err = db.Exec(query)
 	if err != nil {
-		log.Fatalf("Faild to exec query: %s\n", query)
-	}
-	query = "drop table if exists safeties"
-	_, err = db.Exec(query)
-	if err != nil {
-		log.Fatalf("Faild to exec query: %s\n", query)
-	}
-	query = "drop table if exists lines"
-	_, err = db.Exec(query)
-	if err != nil {
-		log.Fatalf("Faild to exec query: %s\n", query)
-	}
-	query = "drop table if exists trains"
-	_, err = db.Exec(query)
-	if err != nil {
-		log.Fatalf("Faild to exec query: %s\n", query)
+		log.Fatalln(err)
 	}
 
 	// テーブルの作成
@@ -81,7 +66,7 @@ func main() {
 	query += ") charset=utf8"
 	_, err = db.Exec(query)
 	if err != nil {
-		log.Fatalf("Faild to exec query: %s\n", query)
+		log.Fatalln(err)
 	}
 
 	query = "create table safeties("
@@ -90,7 +75,7 @@ func main() {
 	query += ") charset=utf8"
 	_, err = db.Exec(query)
 	if err != nil {
-		log.Fatalf("Faild to exec query: %s\n", query)
+		log.Fatalln(err)
 	}
 
 	query = "create table lines("
@@ -112,7 +97,7 @@ func main() {
 	query += ") charset=utf8"
 	_, err = db.Exec(query)
 	if err != nil {
-		log.Fatalf("Faild to exec query: %s\n", query)
+		log.Fatalln(err)
 	}
 
 	query = "create table trains("
@@ -138,6 +123,6 @@ func main() {
 	query += ") charset=utf8"
 	_, err = db.Exec(query)
 	if err != nil {
-		log.Fatalf("Faild to exec query: %s\n", query)
+		log.Fatalln(err)
 	}
 }
