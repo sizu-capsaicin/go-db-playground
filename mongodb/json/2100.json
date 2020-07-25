@@ -5,8 +5,9 @@
       {
         "name": "京急本線",
         "rail-width": 1435,
-        "range": 56.7,
-        "safety": [
+        "rail-range": 56.7,
+        "stations": 50,
+        "safeties": [
           {
             "name": "C-ATS"
           }
@@ -20,8 +21,9 @@
       {
         "name": "京急久里浜線",
         "rail-width": 1435,
-        "range": 13.4,
-        "safety": [
+        "rail-range": 13.4,
+        "stations": 9,
+        "safeties": [
           {
             "name": "C-ATS"
           }

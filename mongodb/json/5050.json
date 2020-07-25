@@ -5,8 +5,9 @@
       {
         "name": "東急東横線",
         "rail-width": 1067,
-        "range": 24.2,
-        "safety": [
+        "rail-range": 24.2,
+        "stations": 21,
+        "safeties": [
           {
             "name": "ATC-P"
           }
@@ -20,8 +21,9 @@
       {
         "name": "横浜高速鉄道みなとみらい線",
         "rail-width": 1067,
-        "range": 4.1,
-        "safety": [
+        "rail-range": 4.1,
+        "stations": 6,
+        "safeties": [
           {
             "name": "ATC-P"
           }
@@ -35,8 +37,9 @@
       {
         "name": "東京メトロ副都心線",
         "rail-width": 1067,
-        "range": 11.9,
-        "safety": [
+        "rail-range": 11.9,
+        "stations": 11,
+        "safeties": [
           {
             "name": "新 CS-ATC"
           },
@@ -53,8 +56,9 @@
       {
         "name": "西武有楽町線",
         "rail-width": 1067,
-        "range": 2.6,
-        "safety": [
+        "rail-range": 2.6,
+        "stations": 3,
+        "safeties": [
           {
             "name": "CS-ATC (ATC-4型)"
           }
@@ -68,8 +72,9 @@
       {
         "name": "西武池袋線",
         "rail-width": 1067,
-        "range": 57.8,
-        "safety": [
+        "rail-range": 57.8,
+        "stations": 31,
+        "safeties": [
           {
             "name": "ATS"
           }
@@ -78,6 +83,25 @@
           "name": "西武鉄道",
           "location": "埼玉県所沢市くすのき台 1 丁目 11 番地の 1",
           "url": "http://www.seiburailway.jp"
+        }
+      },
+      {
+        "name": "東武東上本線",
+        "rail-width": 1067,
+        "rail-range": 75.0,
+        "stations": 38,
+        "safeties": [
+          {
+            "name": "T-DATC"
+          },
+          {
+            "name": "東武 ATS (TSP)"
+          }
+        ],
+        "operator": {
+          "name": "東武鉄道",
+          "location": "東京都墨田区押上 2 丁目 18 番 12 号",
+          "url": "http://www.tobu.co.jp"
         }
       }
     ],
