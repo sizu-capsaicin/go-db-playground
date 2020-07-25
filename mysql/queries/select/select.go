@@ -6,11 +6,11 @@ import (
 	"log"
 
 	_ "github.com/go-sql-driver/mysql"
-	"github.com/sizu-capsaicin/go-db-playground/mysql"
+	mysql "github.com/sizu-capsaicin/go-db-playground/mysql"
 )
 
 const (
-	mysqlPath = "tcp(127.0.0.1:3333)/"
+	mysqlPath = "tcp(127.0.0.1:3306)/"
 	userName  = "root"
 	passwd    = "xxxx"
 	dbName    = "adb"
