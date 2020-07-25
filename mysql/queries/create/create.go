@@ -4,10 +4,12 @@ import (
 	"database/sql"
 	"flag"
 	"log"
+
+	_ "github.com/go-sql-driver/mysql"
 )
 
 const (
-	mysqlPath = "tcp(127.0.0.1:3333)/"
+	mysqlPath = "tcp(127.0.0.1:3306)/"
 	userName  = "root"
 	passwd    = "xxxx"
 )
@@ -32,8 +34,15 @@ func main() {
 		log.Fatalf("Faild to exec query: %s\n", query)
 	}
 
+	// テーブルのスイッチ
+	query = "use " + *dbName
+	_, err = db.Exec(query)
+	if err != nil {
+		log.Fatalf("Faild to exec query: %s\n", query)
+	}
+
 	// テーブルの作成
-	query = "create table train()" + *dbName
+	query = "create table train (id integer)"
 	_, err = db.Exec(query)
 	if err != nil {
 		log.Fatalf("Faild to exec query: %s\n", query)
