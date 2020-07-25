@@ -1,5 +1,10 @@
 package mongo
 
+// Data は以下に続くデータを格納する構造体
+type Data struct {
+	Train Train `json:"train"`
+}
+
 // Train は train table のデータを格納する構造体
 type Train struct {
 	// 形式名
