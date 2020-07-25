@@ -86,14 +86,10 @@ func main() {
 	query += "stations int, "
 	query += "safety_id int not null, "
 	query += "operator_id int not null, "
-	query += "constraint fk_safety_id "
 	query += "foreign key (safety_id) "
 	query += "references `safeties` (id) "
-	query += "on delete restrict on update restrict, "
-	query += "constraint fk_operator_id "
 	query += "foreign key (operator_id) "
 	query += "references `companies` (id) "
-	query += "on delete restrict on update restrict"
 	query += ") charset=utf8"
 	_, err = db.Exec(query)
 	if err != nil {
@@ -108,18 +104,12 @@ func main() {
 	query += "max_speed int, "
 	query += "acceleration int, "
 	query += "safety_id int not null, "
-	query += "constraint fk_operator_id "
 	query += "foreign key (operator_id) "
 	query += "references `companies` (id) "
-	query += "on delete restrict on update restrict, "
-	query += "constraint fk_line_id "
 	query += "foreign key (line_id) "
 	query += "references `lines` (id) "
-	query += "on delete restrict on update restrict, "
-	query += "constraint fk_safety_id "
 	query += "foreign key (safety_id) "
 	query += "references `safeties` (id) "
-	query += "on delete restrict on update restrict"
 	query += ") charset=utf8"
 	_, err = db.Exec(query)
 	if err != nil {
