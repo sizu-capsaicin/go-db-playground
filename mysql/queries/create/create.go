@@ -87,9 +87,9 @@ func main() {
 	query += "safety_id int not null, "
 	query += "operator_id int not null, "
 	query += "foreign key (safety_id) "
-	query += "references `safeties`(id) "
+	query += "references `safeties`(id), "
 	query += "foreign key (operator_id) "
-	query += "references `companies`(id) "
+	query += "references `companies`(id)"
 	query += ") charset=utf8"
 	_, err = db.Exec(query)
 	if err != nil {
@@ -104,9 +104,9 @@ func main() {
 	query += "max_speed int, "
 	query += "acceleration int, "
 	query += "foreign key (operator_id) "
-	query += "references `companies` (id) "
+	query += "references `companies`(id), "
 	query += "foreign key (line_id) "
-	query += "references `lines` (id) "
+	query += "references `lines`(id)"
 	query += ") charset=utf8"
 	_, err = db.Exec(query)
 	if err != nil {
