@@ -40,7 +40,7 @@ func findAndUpdate(update int) {
 	maxSpeed := r[0].Train.MaxSpeed
 	// セレクタ・更新内容の設定
 	s := bson.M{"train.name": "京急 2100 形"}
-	u := bson.M{"$set": bson.M{"train.max-speed": maxSpeed + update}}
+	u := bson.M{"$set": bson.M{"train.maxspeed": maxSpeed + update}}
 
 	// 更新
 	mongo.Update(s, u)
