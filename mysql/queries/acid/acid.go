@@ -3,6 +3,7 @@ package main
 import (
 	"database/sql"
 	"flag"
+	"fmt"
 	"log"
 	"time"
 
@@ -71,5 +72,11 @@ func findAndUpdate(update int, db *sql.DB) {
 	if err != nil {
 		log.Fatalln(err)
 	}
-	upd.Exec(maxSpeed+update, "京急 2100 形")
+	r, err := upd.Exec(maxSpeed+update, "京急 2100 形")
+	if err != nil {
+		log.Fatalln(err)
+	}
+	if r != nil {
+		fmt.Println(r)
+	}
 }
