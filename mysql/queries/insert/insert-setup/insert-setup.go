@@ -39,7 +39,7 @@ func main() {
 	ins.Exec("新 CS-ATS")
 	ins.Exec("ATO")
 	ins.Exec("CS-ATC (ATC-4型)")
-	ins.Exec("ATS")
+	ins.Exec("西武 ATS")
 	ins.Exec("T-DATC")
 	ins.Exec("東武 ATS (TSP)")
 	ins.Exec("1 号型 ATS")

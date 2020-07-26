@@ -58,6 +58,7 @@ func main() {
 	}
 
 	// テーブルの作成
+	// create companies
 	query = "create table `companies`("
 	query += "id int auto_increment not null primary key, "
 	query += "name varchar(50), "
@@ -69,6 +70,7 @@ func main() {
 		log.Fatalln(err)
 	}
 
+	// create safeties
 	query = "create table `safeties`("
 	query += "id int auto_increment not null primary key, "
 	query += "name varchar(50) "
@@ -78,6 +80,7 @@ func main() {
 		log.Fatalln(err)
 	}
 
+	// create lines
 	query = "create table `lines`("
 	query += "id int auto_increment not null primary key, "
 	query += "name varchar(50), "
@@ -96,6 +99,7 @@ func main() {
 		log.Fatalln(err)
 	}
 
+	// create trains
 	query = "create table `trains`("
 	query += "id int auto_increment not null primary key, "
 	query += "name varchar(50), "
@@ -110,6 +114,7 @@ func main() {
 		log.Fatalln(err)
 	}
 
+	// create trains_lines
 	query = "create table `trains_lines`("
 	query += "train_id int not null, "
 	query += "line_id int not null, "
@@ -123,6 +128,7 @@ func main() {
 		log.Fatalln(err)
 	}
 
+	// create trains_safeties
 	query = "create table `trains_safeties`("
 	query += "train_id int not null, "
 	query += "safety_id int not null, "
