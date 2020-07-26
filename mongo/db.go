@@ -75,3 +75,20 @@ func FindAll(data interface{}, query bson.M) {
 
 	db.C(cName).Find(query).All(data)
 }
+
+// Update はセレクタに該当する document を全て update する関数
+func Update(selector interface{}, update interface{}) {
+	// MongoDB との接続
+	s, _ := mgo.Dial(path)
+	defer s.Close()
+	db := s.DB(dbName)
+
+	// 更新
+	info, err := db.C(cName).UpdateAll(selector, update)
+	if err != nil {
+		log.Fatalln(err)
+	}
+	if info != nil {
+		fmt.Printf("%+v\n", info)
+	}
+}
