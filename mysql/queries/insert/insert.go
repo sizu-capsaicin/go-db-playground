@@ -2,6 +2,7 @@ package main
 
 import (
 	"database/sql"
+	"flag"
 	"log"
 
 	_ "github.com/go-sql-driver/mysql"
@@ -10,13 +11,13 @@ import (
 const (
 	mysqlPath = "tcp(127.0.0.1:3306)/"
 	userName  = "go"
-	passwd    = "xxxx"
 	dbName    = "adb"
-	path      = userName + ":" + passwd + "@" + mysqlPath + dbName
 )
 
 func main() {
+	var passwd = flag.String("pw", "xxxx", "Enter the password")
 	// MySQL への接続
+	path := userName + ":" + *passwd + "@" + mysqlPath + dbName
 	db, err := sql.Open("mysql", path)
 	if err != nil {
 		log.Fatal("DB connection error.")
