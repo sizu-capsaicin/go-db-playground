@@ -23,6 +23,22 @@ func main() {
 	flag.Parse()
 	path := userName + ":" + *passwd + "@" + mysqlPath + dbName
 
+	// 並行処理
+	eg := errgroup.Group{}
+	eg.Go(func() error {
+		findAndUpdate(-10, path)
+		return nil
+	})
+	eg.Go(func() error {
+		findAndUpdate(+10, path)
+		return nil
+	})
+	if err := eg.Wait(); err != nil {
+		log.Fatalln(err)
+	}
+}
+
+func findAndUpdate(update int, path string) {
 	// MySQL への接続
 	db, err := sql.Open("mysql", path)
 	if err != nil {
@@ -30,22 +46,6 @@ func main() {
 	}
 	defer db.Close()
 
-	// 並行処理
-	eg := errgroup.Group{}
-	eg.Go(func() error {
-		findAndUpdate(-10, db)
-		return nil
-	})
-	eg.Go(func() error {
-		findAndUpdate(+10, db)
-		return nil
-	})
-	if err = eg.Wait(); err != nil {
-		log.Fatalln(err)
-	}
-}
-
-func findAndUpdate(update int, db *sql.DB) {
 	// find
 	query := "select t.max_speed from `trains` as t where t.name=\"京急 2100 形\""
 	rows, err := db.Query(query)
@@ -63,15 +63,16 @@ func findAndUpdate(update int, db *sql.DB) {
 	}
 	maxSpeed := results[0].MaxSpeed
 
-	// sleep
-	time.Sleep(time.Second * 10)
-
 	// update
 	query = "update trains set max_speed=? where name=?"
 	upd, err := db.Prepare(query)
 	if err != nil {
 		log.Fatalln(err)
 	}
+
+	// sleep
+	time.Sleep(time.Second * 10)
+
 	r, err := upd.Exec(maxSpeed+update, "京急 2100 形")
 	if err != nil {
 		log.Fatalln(err)
