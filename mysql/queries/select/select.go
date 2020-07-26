@@ -29,7 +29,7 @@ func main() {
 	defer db.Close()
 
 	// クエリの実行
-	query := ""
+	query := "select t.max_speed from `trains` as t"
 	rows, err := db.Query(query)
 	if err != nil {
 		log.Fatalln(err)
@@ -38,13 +38,13 @@ func main() {
 	var results []mysql.Train
 	for rows.Next() {
 		var train mysql.Train
-		if err = rows.Scan(train.Name); err != nil {
+		if err = rows.Scan(&train.MaxSpeed); err != nil {
 			log.Fatalln(err)
 		}
 		results = append(results, train)
 	}
 
 	for _, r := range results {
-		fmt.Printf("Train name: %s\n", r.Name)
+		fmt.Printf("Train's max-speed: %d\n", r.MaxSpeed)
 	}
 }
