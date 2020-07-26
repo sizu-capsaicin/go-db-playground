@@ -76,7 +76,7 @@
         "stations": 31,
         "safeties": [
           {
-            "name": "ATS"
+            "name": "西武 ATS"
           }
         ],
         "operator": {
@@ -111,6 +111,26 @@
       "url": "https://www.tokyu.co.jp/railway/"
     },
     "max-speed": 110,
-    "acceleration": 3.3
+    "acceleration": 3.3,
+    "safeties": [
+      {
+        "name": "ATC-P"
+      },
+      {
+        "name": "新 CS-ATC"
+      },
+      {
+        "name": "T-DATC"
+      },
+      {
+        "name": "ATO"
+      },
+      {
+        "name": "西武 ATS"
+      },
+      {
+        "name": "東武 ATS (TSP)"
+      }
+    ]
   }
 }

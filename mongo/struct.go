@@ -17,6 +17,8 @@ type Train struct {
 	MaxSpeed int `json:"max-speed"`
 	// 起動加速度
 	Acceleration float64 `json:"acceleration"`
+	// 搭載保安装置
+	Safeties []Safety `json:"safeties"`
 }
 
 // Line は line table のデータを格納する構造体

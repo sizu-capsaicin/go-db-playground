@@ -185,6 +185,11 @@
       "url": "https://www.kotsu.metro.tokyo.jp"
     },
     "max-speed": 120,
-    "acceleration": 3.3
+    "acceleration": 3.3,
+    "safeties": [
+      {
+        "name": "C-ATS"
+      }
+    ]
   }
 }
