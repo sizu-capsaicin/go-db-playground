@@ -3,11 +3,9 @@ package main
 import (
 	"database/sql"
 	"flag"
-	"fmt"
 	"log"
 
 	_ "github.com/go-sql-driver/mysql"
-	mysql "github.com/sizu-capsaicin/go-db-playground/mysql"
 )
 
 const (
@@ -29,22 +27,10 @@ func main() {
 	defer db.Close()
 
 	// クエリの実行
-	query := "select t.max_speed from `trains` as t"
-	rows, err := db.Query(query)
+	query := "update trains set max_speed=? where name=?"
+	upd, err := db.Prepare(query)
 	if err != nil {
 		log.Fatalln(err)
 	}
-
-	var results []mysql.Train
-	for rows.Next() {
-		var train mysql.Train
-		if err = rows.Scan(&train.MaxSpeed); err != nil {
-			log.Fatalln(err)
-		}
-		results = append(results, train)
-	}
-
-	for _, r := range results {
-		fmt.Printf("Train's max-speed: %d\n", r.MaxSpeed)
-	}
+	upd.Exec(130, "京急 2100 形")
 }
