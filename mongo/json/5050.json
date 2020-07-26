@@ -10,6 +10,12 @@
         "safeties": [
           {
             "name": "ATC-P"
+          },
+          {
+            "name": "ATO"
+          },
+          {
+            "name": "TACS"
           }
         ],
         "operator": {
@@ -26,6 +32,12 @@
         "safeties": [
           {
             "name": "ATC-P"
+          },
+          {
+            "name": "ATO"
+          },
+          {
+            "name": "TACS"
           }
         ],
         "operator": {
@@ -45,6 +57,9 @@
           },
           {
             "name": "ATO"
+          },
+          {
+            "name": "TACS"
           }
         ],
         "operator": {
@@ -124,6 +139,9 @@
       },
       {
         "name": "ATO"
+      },
+      {
+        "name": "TASC"
       },
       {
         "name": "TASC"
