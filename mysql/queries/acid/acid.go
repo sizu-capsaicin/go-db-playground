@@ -4,9 +4,11 @@ import (
 	"database/sql"
 	"flag"
 	"log"
+	"time"
 
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/sizu-capsaicin/go-db-playground/mysql"
+	"golang.org/x/sync/errgroup"
 )
 
 const (
@@ -27,7 +29,19 @@ func main() {
 	}
 	defer db.Close()
 
-	findAndUpdate(+10, db)
+	// 並行処理
+	eg := errgroup.Group{}
+	eg.Go(func() error {
+		findAndUpdate(-10, db)
+		return nil
+	})
+	eg.Go(func() error {
+		findAndUpdate(+10, db)
+		return nil
+	})
+	if err = eg.Wait(); err != nil {
+		log.Fatalln(err)
+	}
 }
 
 func findAndUpdate(update int, db *sql.DB) {
@@ -47,6 +61,9 @@ func findAndUpdate(update int, db *sql.DB) {
 		results = append(results, train)
 	}
 	maxSpeed := results[0].MaxSpeed
+
+	// sleep
+	time.Sleep(time.Second * 10)
 
 	// update
 	query = "update trains set max_speed=? where name=?"
