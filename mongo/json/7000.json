@@ -41,6 +41,17 @@
       "url": "https://www.tokyu.co.jp/railway/"
     },
     "max-speed": 85,
-    "acceleration": 3.3
+    "acceleration": 3.3,
+    "safeties": [
+      {
+        "name": "東急 ATS"
+      },
+      {
+        "name": "TASC"
+      },
+      {
+        "name": "ATC-P"
+      }
+    ]
   }
 }
