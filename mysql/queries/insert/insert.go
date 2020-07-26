@@ -24,11 +24,11 @@ func main() {
 	defer db.Close()
 
 	// クエリの実行
-	query := ""
-	ins, err := db.Prepare(query)
+	q := "insert into `safeties`(name) values(?)"
+	ins, err := db.Prepare(q)
 	if err != nil {
 		log.Fatalln(err)
 	}
 
-	ins.Exec("")
+	ins.Exec("C-ATS")
 }
