@@ -29,13 +29,13 @@ func Insert(data Data) {
 }
 
 // DropAll は指定した collection の全 document を delete する関数
-func DropAll(q bson.M) {
+func DropAll(query bson.M) {
 	// MongoDB との接続
 	s, _ := mgo.Dial(path)
 	defer s.Close()
 	db := s.DB(dbName)
 
-	info, err := db.C(cName).RemoveAll(q)
+	info, err := db.C(cName).RemoveAll(query)
 	if err != nil {
 		log.Fatalln(err)
 	}
@@ -45,11 +45,11 @@ func DropAll(q bson.M) {
 }
 
 // FindAll は全ての document を select する関数
-func FindAll(data interface{}) {
+func FindAll(data interface{}, query bson.M) {
 	// MongoDB との接続
 	s, _ := mgo.Dial(path)
 	defer s.Close()
 	db := s.DB(dbName)
 
-	db.C(cName).Find(bson.M{}).All(data)
+	db.C(cName).Find(query).All(data)
 }

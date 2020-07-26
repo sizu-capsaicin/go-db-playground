@@ -6,6 +6,9 @@ import (
 )
 
 func main() {
+	// drop クエリ
+	query := bson.M{}
+
 	// DB の Document を Drop
-	mongo.DropAll(bson.M{})
+	mongo.DropAll(query)
 }
