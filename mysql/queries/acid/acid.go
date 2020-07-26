@@ -46,9 +46,15 @@ func findAndUpdate(update int, path string) {
 	}
 	defer db.Close()
 
+	// transaction
+	transaction, err := db.Begin()
+	if err != nil {
+		log.Fatalln(err)
+	}
+
 	// find
 	query := "select t.max_speed from `trains` as t where t.name=\"京急 2100 形\""
-	rows, err := db.Query(query)
+	rows, err := transaction.Query(query)
 	if err != nil {
 		log.Fatalln(err)
 	}
@@ -65,7 +71,7 @@ func findAndUpdate(update int, path string) {
 
 	// update
 	query = "update trains set max_speed=? where name=?"
-	upd, err := db.Prepare(query)
+	upd, err := transaction.Prepare(query)
 	if err != nil {
 		log.Fatalln(err)
 	}
@@ -80,4 +86,6 @@ func findAndUpdate(update int, path string) {
 	if r != nil {
 		fmt.Println(r)
 	}
+
+	transaction.Commit()
 }
