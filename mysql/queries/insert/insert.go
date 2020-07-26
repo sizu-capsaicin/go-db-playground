@@ -16,6 +16,8 @@ const (
 
 func main() {
 	var passwd = flag.String("pw", "xxxx", "Enter the password")
+	flag.Parse()
+
 	// MySQL への接続
 	path := userName + ":" + *passwd + "@" + mysqlPath + dbName
 	db, err := sql.Open("mysql", path)
