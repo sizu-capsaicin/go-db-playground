@@ -8,7 +8,7 @@ import (
 func main() {
 	// セレクタ・更新内容の設定
 	s := bson.M{"train.name": "京急 2100 形"}
-	u := bson.M{"$set": bson.M{"train.max_speed": 110}}
+	u := bson.M{"$set": bson.M{"train.max-speed": 110}}
 
 	// 更新
 	mongo.Update(s, u)
