@@ -51,7 +51,7 @@ func main() {
 	}
 
 	// テーブルが既に作成済みであれば一度 drop する
-	query = "drop temporary table if exists `companies`, `safeties`, `lines`, `trains`"
+	query = "drop temporary table if exists `companies`, `safeties`, `lines`, `trains`, `trains_lines`, `trains_safeties`"
 	_, err = db.Exec(query)
 	if err != nil {
 		log.Fatalln(err)
@@ -99,14 +99,37 @@ func main() {
 	query = "create table `trains`("
 	query += "id int auto_increment not null primary key, "
 	query += "name varchar(50), "
-	query += "line_id int not null, "
 	query += "operator_id int not null, "
 	query += "max_speed int, "
 	query += "acceleration float, "
 	query += "foreign key (operator_id) "
-	query += "references `companies`(id), "
+	query += "references `companies`(id)"
+	query += ") charset=utf8"
+	_, err = db.Exec(query)
+	if err != nil {
+		log.Fatalln(err)
+	}
+
+	query = "create table `trains_lines`("
+	query += "train_id int not null, "
+	query += "line_id int not null, "
+	query += "foreign key (train_id) "
+	query += "references `trains`(id), "
 	query += "foreign key (line_id) "
 	query += "references `lines`(id)"
+	query += ") charset=utf8"
+	_, err = db.Exec(query)
+	if err != nil {
+		log.Fatalln(err)
+	}
+
+	query = "create table `trains_safeties`("
+	query += "train_id int not null, "
+	query += "safety_id int not null, "
+	query += "foreign key (train_id) "
+	query += "references `trains`(id), "
+	query += "foreign key (safety_id) "
+	query += "references `safeties`(id)"
 	query += ") charset=utf8"
 	_, err = db.Exec(query)
 	if err != nil {
