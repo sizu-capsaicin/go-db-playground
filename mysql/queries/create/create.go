@@ -141,4 +141,18 @@ func main() {
 	if err != nil {
 		log.Fatalln(err)
 	}
+
+	// create lines_safeties
+	query = "create table `lines_safeties`("
+	query += "line_id int not null, "
+	query += "safety_id int not null, "
+	query += "foreign key (line_id) "
+	query += "references `lines`(id), "
+	query += "foreign key (safety_id) "
+	query += "references `safeties`(id)"
+	query += ") charset=utf8"
+	_, err = db.Exec(query)
+	if err != nil {
+		log.Fatalln(err)
+	}
 }
