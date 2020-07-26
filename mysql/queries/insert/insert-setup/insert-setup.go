@@ -91,7 +91,7 @@ func main() {
 	ins.Exec("都営浅草線", 1435, 18.3, 20, 2, 10)
 
 	// trains への insert
-	query = "insert into `trains`(name, operator_id, max_speed, acceleration) values(?, ?, ?, ?, ?)"
+	query = "insert into `trains`(name, operator_id, max_speed, acceleration) values(?, ?, ?, ?)"
 	ins, err = db.Prepare(query)
 	if err != nil {
 		log.Fatalln(err)
