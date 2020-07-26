@@ -51,7 +51,7 @@ func main() {
 	}
 
 	// テーブルが既に作成済みであれば一度 drop する
-	query = "drop temporary table if exists `companies`, `safeties`, `lines`, `trains`, `trains_lines`, `trains_safeties`"
+	query = "drop temporary table if exists `companies`, `safeties`, `lines`, `trains`, `trains_lines`, `trains_safeties`, `lines_safeties`"
 	_, err = db.Exec(query)
 	if err != nil {
 		log.Fatalln(err)
