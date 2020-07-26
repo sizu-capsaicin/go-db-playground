@@ -28,6 +28,28 @@ func Insert(data Data) {
 	}
 }
 
+// BulkInsert は document を bulk instert する関数
+func BulkInsert(data []Data) {
+	// MongoDB との接続
+	s, _ := mgo.Dial(path)
+	defer s.Close()
+	db := s.DB(dbName)
+
+	col := db.C(cName)
+	bulk := col.Bulk()
+	for _, d := range data {
+		bulk.Insert(d)
+	}
+
+	br, err := bulk.Run()
+	if err != nil {
+		log.Fatalln(err)
+	}
+	if br != nil {
+		fmt.Printf("bulk result: %+v\n", br)
+	}
+}
+
 // DropAll は指定した collection の全 document を delete する関数
 func DropAll(query bson.M) {
 	// MongoDB との接続
