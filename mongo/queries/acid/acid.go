@@ -2,6 +2,7 @@ package main
 
 import (
 	"log"
+	"time"
 
 	"github.com/globalsign/mgo/bson"
 	"github.com/sizu-capsaicin/go-db-playground/mongo"
@@ -31,6 +32,9 @@ func findAndUpdate(update int) {
 
 	// find
 	mongo.FindAll(&r, q)
+
+	// 一旦寝かせる
+	time.Sleep(time.Second * 10)
 
 	// max-speed の抜き出し
 	maxSpeed := r[0].Train.MaxSpeed
