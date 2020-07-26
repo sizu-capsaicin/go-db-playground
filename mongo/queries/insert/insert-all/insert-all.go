@@ -13,7 +13,7 @@ const jsonPath = "mongo/json/"
 func main() {
 	filePaths := []string{jsonPath + "1000.json", jsonPath + "2100.json", jsonPath + "5050.json", jsonPath + "5500.json", jsonPath + "7000.json"}
 
-	dataSlice := make([]mongo.Data, 5)
+	var dataSlice []mongo.Data
 	for _, fp := range filePaths {
 		// json ファイルを開く
 		file, err := ioutil.ReadFile(fp)
