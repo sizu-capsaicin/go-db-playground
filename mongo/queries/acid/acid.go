@@ -42,6 +42,9 @@ func findAndUpdate(update int) {
 	s := bson.M{"train.name": "京急 2100 形"}
 	u := bson.M{"$set": bson.M{"train.maxspeed": maxSpeed + update}}
 
+	// 一旦寝かせる
+	time.Sleep(time.Second * 10)
+
 	// 更新
 	mongo.Update(s, u)
 }
