@@ -27,11 +27,19 @@ func main() {
 	defer db.Close()
 
 	// クエリの実行
+	// safeties への insert
 	q := "insert into `safeties`(name) values(?)"
 	ins, err := db.Prepare(q)
 	if err != nil {
 		log.Fatalln(err)
 	}
-
+	ins.Exec("東急 ATS")
 	ins.Exec("C-ATS")
+	ins.Exec("ATC-P")
+	ins.Exec("新 CS-ATS")
+	ins.Exec("ATO")
+	ins.Exec("CS-ATC (ATC-4型)")
+	ins.Exec("ATS")
+	ins.Exec("T-DATC")
+	ins.Exec("東武 ATS (TSP)")
 }
