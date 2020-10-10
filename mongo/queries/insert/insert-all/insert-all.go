@@ -4,7 +4,6 @@ import (
 	"encoding/json"
 	"io/ioutil"
 	"log"
-	"time"
 
 	"github.com/sizu-capsaicin/go-db-playground/mongo"
 )
