@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"strconv"
 
 	"github.com/globalsign/mgo/bson"
 	"github.com/sizu-capsaicin/go-db-playground/mongo"
@@ -21,11 +20,12 @@ func main() {
 	// 結果の表示
 	var str string
 	for _, r := range results {
-		for _, l := range t.Lines {
+		for _, l := range r.Train.Lines {
 			if _, ok := name[l.Name]; ok == false {
 				name[l.Name] = l.Name
 				str += "  |- name: " + l.Name + "\n"
 			}
+		}
 	}
 	fmt.Print(str)
 }
