@@ -15,7 +15,7 @@ func main() {
 
 	// DB からの読み出し
 	mongo.FindAll(&results, query)
-	var name map[string]string
+	name := make(map[string]string)
 
 	// 結果の表示
 	var str string
